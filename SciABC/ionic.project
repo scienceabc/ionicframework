@@ -1,0 +1,12 @@
+{
+  "name": "SciABC",
+  "app_id": "6339d03e",
+  "gulpStartupTasks": [
+    "sass",
+    "watch"
+  ],
+  "watchPatterns": [
+    "www/**/*",
+    "!www/lib/**/*"
+  ]
+}

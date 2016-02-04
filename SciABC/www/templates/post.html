@@ -1,0 +1,40 @@
+<ion-view view-title="{{post.title}}">
+    <ion-content overflow-scroll="true" padding="true" class="has-header" ng-init="doSomething()">
+      <div class="parallax">
+          <div class="parallax__layer parallax__layer--back">
+        <img src="{{post.thumbnail_url}}" style="width:100%;">
+      </div>
+      <div class="parallax__layer parallax__layer--base">
+	<button class="button button-calm" style="margin-top: 5px;">
+  		<i class="icon ion-earth"></i>{{post.categories}}
+	</button>
+	<h2 class="title"><center><div ng-bind-html="post.title" style="background-color: white;"></div></center></h2>
+	<div class="row" style="color: #a4a4a4; font-size: 3vmin; background-color: white;">
+                        <div class="col-50">
+				<center><div><i class="icon ion-person"></i>{{post.author}}</div></center>
+                        </div>
+                        <div class="col-50">
+				<center><div data-ng-if="post.date"><i class="icon ion-android-calendar"></i>{{post.date | form}}</div></center>
+                        </div>
+        </div>
+        <div ng-bind-html="post.content" style="text-align: justify; max-width: 100%; background-color: white;"></div>
+        <div style="margin-top: 20px; margin-bottom: 5px;"><center><h3>Share This!</h3></center></div>
+        <div class="row">
+            <div class="col" style="background-color: #3b5998;" ng-click="facebook(post.permalink)"><center><i class="icon ion-social-facebook" style="color:white; font-size: 10vw;"></i></center></div>
+            <div class="col" style="background-color: #00aced;" ng-click="twitter(post.permalink)"><center><i class="icon ion-social-twitter" style="color:white; font-size: 10vw;"></i></center></div>
+            <div class="col" style="background-color: #43d854;" ng-click="whatsapp(post.permalink)"><center><i class="icon ion-social-whatsapp" style="color:white; font-size: 10vw;"></i></center></div>
+            <div class="col" style="background-color: #00bcf2;" ng-click="share(post.permalink)"><center><i class="icon ion-android-share-alt" style="color:white; font-size: 10vw;"></i></center></div>
+        </div>
+        <div style="margin-top: 20px; margin-bottom: 5px;"><center><h3>You May Also Like</h3></center></div>
+        <div ng-repeat="relp in post.related">
+            <div class="row" ng-if="$even">
+                <div class="col col-50 title"><a href="#/menu/posts/{{post.related[$index].id}}"><div class="row"><center><img src="{{post.related[$index].image}}" style="width:90%;"></center></div><div class="row"><h5><center>{{post.related[$index].title}}</center></h5></div></a></div>
+                <div class="col col-50 title"><a href="#/menu/posts/{{post.related[$index+1].id}}"><div class="row"><center><img src="{{post.related[$index + 1].image}}" style="width:90%;"></center></div><div class="row"><h5><center>{{post.related[$index + 1].title}}</center></h5></div></a></div>
+            </div>
+        </div>
+        <button class="button button-full button-calm" ng-click="showComments()" ng-show="showButton">Show Comments</button>
+        <iframe ng-src="{{url}}" style="width: 100%; height: 300px; margin-top: 5px;" ng-show="showIframe"> </iframe>
+      </div>
+      </div>
+    </ion-content>
+</ion-view>

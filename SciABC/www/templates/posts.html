@@ -1,0 +1,22 @@
+<ion-view title="ScienceABC">
+    <ion-content overflow-scroll="true" padding="true" class="has-header mainback" lazy-scroll>
+        <div class="logo"><center><img src="img/Logo.png"></center></div>
+        <div class="list card" ng-repeat="post in posts" href="#/app/posts/{{post.id}}" style="max-width: 650px; display: block; margin: 5vmin auto;">
+            <div class="item item-body no-padding">
+                <a style="display: inline-block; width: 100%; height: auto;" href="#/menu/posts/{{post.id}}">
+                    <img image-lazy-src="{{post.thumbnail_url}}" width="100%" height="auto" lazy-scroll-resize="true" image-lazy-loader="lines" image-lazy-distance-from-bottom-to-load="100">
+                </a>
+                <h2 class="title"><center><a href="#/menu/posts/{{post.id}}"><div ng-bind-html="post.title"></div></a></center></h2>
+		<div class="row" style="color: #a4a4a4; font-size: 3vmin;">
+			<div class="col-50">
+				<center><div data-ng-if="post.date"><i class="icon ion-android-calendar"></i>{{post.date | ago}}</div></center>
+			</div>
+			<div class="col-50">
+				<center><div><i class="icon ion-pricetags"></i>{{post.categories}}</div></center>
+			</div>
+		</div>
+            </div>
+        </div>
+        <button class="button button-full button-calm" ng-click="loadMore()">Load More Posts!</button>
+    </ion-content>
+</ion-view>
